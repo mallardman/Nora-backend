@@ -100,6 +100,7 @@ function responseHandle(array $words){
 	
 	//array to hold results
 	$results = array();
+	
 	//obtain array of results
 	foreach($conn->query($getUrlSql) as $row){
 		array_push($results,$row['url']);
@@ -114,9 +115,7 @@ function responseHandle(array $words){
 	
 	//if everything worked correctly,
 	//echo json encoded URLs
-	echo json_encode($results);
+	return json_encode($results);
 	
-	//return true and quit
-	return true;
 }
 ?>

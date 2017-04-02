@@ -10,15 +10,14 @@
 
 <body>
 <script>
-function nora_search(query){
+function nora_search(){
 	var query = $("#query_sr").val();
-	var convertedQuery = query.replace(/ /g, "_");
-	var destUrl = 
-		"http://versellie.com/nora/results.php?search=" +
-		convertedQuery;
-	$.ajax({
-		url:destUrl,
-		data:convertedQuery,
+	var queryList = query.split(" ");
+	destUrl = "https://www.versellie.com/nora/results.php";
+	$.ajax(
+		{url:destUrl,
+		data:{queryArray:queryList},
+		type:"POST",
 		dataType:"json",
 		complete:function(data){
 			var tableCont = "";
